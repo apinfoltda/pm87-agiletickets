@@ -23,6 +23,7 @@ public class Sessao {
 	@ManyToOne
 	private Espetaculo espetaculo;
 
+	
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime inicio;
 
@@ -108,7 +109,7 @@ public class Sessao {
 
 	public boolean podeReservar(Integer numeroDeIngressos) {
 		int sobraram = getIngressosDisponiveis() - numeroDeIngressos;
-        boolean naoTemEspaco = sobraram <= 0;
+        boolean naoTemEspaco = sobraram < 0;
 
         return !naoTemEspaco;
 	}
